@@ -28,6 +28,7 @@ function App() {
           </div>
           <br/>
           <div>
+          /*otp field*/
           {state ? (
             <PinInput>
               <PinInputField />
