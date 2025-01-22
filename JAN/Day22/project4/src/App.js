@@ -3,6 +3,7 @@ import './App.css';
 import Calculator from './Calculator';
 
 function App() {
+  // new line
   return (
     <div className="App">
       <Calculator/>
