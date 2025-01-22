@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState,useRef,useEffect} from "react"
-import removeUploadedFiles from 'multer/lib/remove-uploaded-files';
 function App() {
   const [running,setRunning]=useState(false)
   const [timer,setTimer]=useState(0);
@@ -48,9 +47,9 @@ function App() {
   }
   return (
     <div className="App" >
-      <div  style={{width:'200px', alignItems:'center' , margin:'auto', marginTop:'10px'}}>
+      <div style={{width:'500px',height:'100px', alignItems:'center' , margin:'auto', marginTop:'10px', border:'3px solid black', borderRadius:'20px'}}>
       <h1>{formatTimer()}</h1>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-around">
       <button  class=" btn btn-success"onClick={startTimer}>Start</button>
       <button class="btn btn-danger"onClick={stopTimer}>Stop</button>
       <button class="btn btn-primary" onClick={resetTimer}>Reset</button>

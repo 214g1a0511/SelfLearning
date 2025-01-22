@@ -1,0 +1,8 @@
+/* Additional custom styling for the app */
+.calculator-container {
+  max-width: 400px;
+  margin: auto;
+}
+.display {
+  font-size: 2rem;
+}
