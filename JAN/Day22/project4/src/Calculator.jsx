@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
 import "./App.css";
 import History from "./History";
-import bs from "./assets/backspace.png"
-
+import bs from "./assets/backspace.png";
+import { RxCross2 } from "react-icons/rx";
 const Calculator = () => {
   const [display, setDisplay] = useState("");
   const [history, setHistory] = useState([]);
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
 
-  const fadeIn = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-  });
-
+ 
   const handleClick = (value) => {
     setDisplay((prevDisplay) => prevDisplay + value);
   };
@@ -43,24 +38,24 @@ const Calculator = () => {
   };
   const handleClearHistory = () => {
     setHistory([]);
-    console.log('Clear History button clicked');
-  
+    console.log("Clear History button clicked");
   };
 
   return (
-    <animated.div
-      style={fadeIn}
-      className="container col-12 col-sm-8 col-md-6 col-lg-4 my-4 p-5 border rounded shadow-lg bg-dark"
+    <div
+      // style={fadeIn}
+      className="container w-25 col-lg-6 p-2 border rounded shadow-lg bg-dark"
+      style={{ border: "1px solid blue" }}
     >
       <div className="row">
-        <div className="sm-col-12 md-col-5">
+        <div className="col-12 md-col-5" style={{ border: "1px solid red" }}>
           <div className="display p-4 fs-1 bg-dark text-white text-end rounded mb-3">
             {display}
           </div>
         </div>
         <div className="col-12">
           <div className="row">
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={handleClear}
@@ -68,7 +63,7 @@ const Calculator = () => {
                 AC
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("%")}
@@ -76,14 +71,12 @@ const Calculator = () => {
                 %
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <div class="rounded-circle bg-secondary p-3">
-              <img src={bs} width="48px"alt="clear"
-              onClick={handleDelete}
-              />
+                <img src={bs} width="48px" alt="clear" onClick={handleDelete} />
               </div>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("/")}
@@ -91,9 +84,9 @@ const Calculator = () => {
                 /
               </button>
             </div>
-            </div>
-            <div className="row">
-            <div className="col-3 mb-2">
+          </div>
+          <div className="row">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("7")}
@@ -101,7 +94,7 @@ const Calculator = () => {
                 7
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("8")}
@@ -109,7 +102,7 @@ const Calculator = () => {
                 8
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("9")}
@@ -117,17 +110,17 @@ const Calculator = () => {
                 9
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("*")}
               >
-                X
+                <RxCross2 color="white" size='35px' />
               </button>
             </div>
-            </div>
-            <div className="row">
-            <div className="col-3 mb-2">
+          </div>
+          <div className="row">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("4")}
@@ -135,7 +128,7 @@ const Calculator = () => {
                 4
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("5")}
@@ -143,7 +136,7 @@ const Calculator = () => {
                 5
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("6")}
@@ -151,7 +144,7 @@ const Calculator = () => {
                 6
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2 align-center">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("-")}
@@ -159,9 +152,9 @@ const Calculator = () => {
                 -
               </button>
             </div>
-            </div>
-            <div className="row">
-            <div className="col-3 mb-2">
+          </div>
+          <div className="row">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("1")}
@@ -169,7 +162,7 @@ const Calculator = () => {
                 1
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("2")}
@@ -177,7 +170,7 @@ const Calculator = () => {
                 2
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("3")}
@@ -185,7 +178,7 @@ const Calculator = () => {
                 3
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("+")}
@@ -193,9 +186,9 @@ const Calculator = () => {
                 +
               </button>
             </div>
-            </div>
-            <div className="row">
-            <div className="col-3 mb-2">
+          </div>
+          <div className="row">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("00")}
@@ -203,7 +196,7 @@ const Calculator = () => {
                 00
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("0")}
@@ -211,7 +204,7 @@ const Calculator = () => {
                 0
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick(".")}
@@ -219,7 +212,7 @@ const Calculator = () => {
                 .
               </button>
             </div>
-            <div className="col-3 mb-2">
+            <div className="col-3 p-2">
               <button
                 className="btn btn-warning w-100 fs-2 rounded-circle p-3"
                 onClick={handleEvaluate}
@@ -227,12 +220,52 @@ const Calculator = () => {
                 =
               </button>
             </div>
-            </div>
-            </div>
-        
+          </div>
+        </div>
       </div>
-    </animated.div>
+    </div>
   );
 };
 
 export default Calculator;
+/*import { IoArrowBackOutline } from "react-icons/io5";
+import { PiDotsThreeOutlineFill } from "react-icons/pi";
+import { useState } from "react";
+
+export default function App() {
+  const [clicked, setClicked] = useState(false);
+  const handleBackButton = () => {};
+  const showHistory = () => {
+    setClicked(true);
+    console.log(clicked);
+  };
+  return (
+    <div className="App">
+      <div
+        style={{
+          width: "300px",
+          height: "500px",
+          border: "1px solid red",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            border: "1px solid red",
+            width: "100%",
+          }}
+        >
+          <div style={{ fontSize: "45px" }} onClick={handleBackButton}>
+            <IoArrowBackOutline />
+          </div>
+
+          <div style={{ fontSize: "45px" }} onClick={showHistory}>
+            <PiDotsThreeOutlineFill />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}*/
