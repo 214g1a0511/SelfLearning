@@ -3,24 +3,29 @@ import "./App.css";
 import History from "./History";
 import bs from "./assets/backspace.png";
 import { RxCross2 } from "react-icons/rx";
+import { BsThreeDots } from "react-icons/bs";
+
 const Calculator = () => {
   const [display, setDisplay] = useState("");
   const [history, setHistory] = useState([]);
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
+  const [equation,setEquation]=useState("");
 
- 
   const handleClick = (value) => {
     setDisplay((prevDisplay) => prevDisplay + value);
+    setEquation(prev => prev === '0' ? value : prev + value);
   };
 
   const handleClear = () => {
     setDisplay("");
+    setEquation("")
     //console.log("cleared")
   };
 
   const handleDelete = () => {
     setDisplay(display.slice(0, -1));
     //console.log("deleteed")
+    setEquation(display.slice(0, -1))
   };
 
   const handleEvaluate = () => {
@@ -28,6 +33,7 @@ const Calculator = () => {
       const result = eval(display);
       setHistory([display + " = " + result, ...history]);
       setDisplay(result.toString());
+
     } catch (error) {
       setDisplay("Error");
     }
@@ -47,9 +53,20 @@ const Calculator = () => {
       className="container w-25 col-lg-6 p-2 border rounded shadow-lg bg-dark"
       style={{ border: "1px solid blue" }}
     >
+      <div style={{
+            color: "grey",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}>
+        <BsThreeDots
+          fontSize="40px"
+          
+        />
+      </div>
       <div className="row">
-        <div className="col-12 md-col-5" style={{ border: "1px solid red" }}>
-          <div className="display p-4 fs-1 bg-dark text-white text-end rounded mb-3">
+        <div className="col-12 md-col-5" >
+          <div style={{ display:"flex",justifyContent:"flex-end",color:"white",fontSize:"20px",padding:"4px"}}>{equation}</div>
+          <div className="display p-2 fs-1 bg-dark text-white text-end rounded mb-3" style={{height:"120px"}}>
             {display}
           </div>
         </div>
@@ -115,7 +132,7 @@ const Calculator = () => {
                 className="btn btn-secondary w-100 fs-2 rounded-circle p-3"
                 onClick={() => handleClick("*")}
               >
-                <RxCross2 color="white" size='35px' />
+                <RxCross2 color="white" size="35px" />
               </button>
             </div>
           </div>
