@@ -8,8 +8,13 @@
     border-radius: 20px;
     background-color: #f8f9f9;
     padding: 40px 50px;
+    border:1px solid red
 
 
+}
+.container .header{
+    display: flex;
+    justify-content: space-between;
 }
 .container hr{
     height:3px;
