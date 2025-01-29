@@ -2,12 +2,13 @@ import { useState } from "react";
 import "./TicTacToe.css";
 import winSound from '../assets/victorymale-version-230553.mp3'
 import clickSound from "../assets/sound-1-167181.mp3"
+import xwin from "../assets/Logo-4-remix1-ezgif.com-video-to-gif-converter.gif"
+import owin from "../assets/ologo.gif"
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const win=new Audio(winSound)
   const click=new Audio(clickSound)
-
   const checkWinner = (squares) => {
     const winningCombinations = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -18,6 +19,7 @@ const TicTacToe = () => {
     for (let [a, b, c] of winningCombinations) {
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         win.play()
+
         return squares[a];
 
       }
@@ -44,19 +46,15 @@ const TicTacToe = () => {
   return (
     <div className="container">
       <h1 className="title">Tic-Tac-Toe</h1>
-      <div className="board">
-        {board.map((cell, index) => (
-          <button
-            key={index}
-            onClick={() => handleClick(index)}
-            className="cell"
-          >
-            {cell}
-          </button>
-        ))}
-      </div>
+      
       {winner && <p className="winner">Winner: {winner}</p>}
+      {/*{winner==="X" &&<img src={xwin}/>}
+      {winner==="O" &&<img src={owin}/>}*/}
+
+
+
       <button onClick={resetGame} className="reset-button">Reset</button>
+
     </div>
   );
 };
