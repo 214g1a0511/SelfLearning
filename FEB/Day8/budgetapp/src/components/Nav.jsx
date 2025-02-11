@@ -7,7 +7,7 @@ const Nav = ({ userName }) => {
   return (
     <nav>
       <NavLink to="/" aria-label="go to home">
-        <img src={home} height={30}></img>
+        <img src={home} height={30}/>
         <span>Home </span>
       </NavLink>
       {userName && (

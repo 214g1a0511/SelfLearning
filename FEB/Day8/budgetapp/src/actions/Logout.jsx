@@ -5,7 +5,10 @@ import { toast } from 'react-toastify'
 
 const Logout = () => {
     deleteItem({key:"userName"})
-toast.warn("You're account has been deleted")
+    deleteItem({key:"budgets"})
+    deleteItem({key:"expenses"})
+
+toast.success("You've deleted your account ")
   return redirect("/")
 }
 

@@ -1,6 +1,6 @@
 import { Currency } from "lucide-react"
 
-export const waait=()=>new Promise(res=>setTimeout(res,Math.random()*2000))
+export const waait=()=>new Promise(res=>setTimeout(res,Math.random()*500))
 
 
 const getRandomColor=()=>{
@@ -42,6 +42,14 @@ export const calculateSpentByBudget=(budgetId)=>{
     },0)
     return budgetSpent
 }
+export const getAllMatchingItems=({category,key,value})=>{
+    const data=fetchData(category)??[]
+    return data.filter((item)=>item[key]===value)
+}
+export const formatToLocaleDate=(epoch)=>
+new Date(epoch).toLocaleDateString();
+//console.log(epoch)
+
 export const formatCurrency=(amt)=>{
     return amt.toLocaleString(undefined,{
         style:"currency",
@@ -54,6 +62,11 @@ export const formatPercentage=(amt)=>{
         minimumFractionsDigits:0,
     })
 }
-export const deleteItem=({key})=>{
+export const deleteItem=({key,id})=>{
+    const existingData=fetchData(key)
+    if(id){
+        const newData=existingData.filter((item)=>item.id!==id)
+        return localStorage.setItem(key,JSON.stringify(newData))
+    }
     return localStorage.removeItem(key)
 }
